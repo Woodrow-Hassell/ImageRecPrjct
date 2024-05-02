@@ -23,7 +23,7 @@ def preprocess_images(images):
     return normalized_images
 
 #Load and preprocess the test batch
-test_batch_file_path = 'cifar-10-batches-py/test_batch'
+test_batch_file_path = 'cifar-10-python\cifar-10-batches-py/test_batch'
 test_batch = load_batch(test_batch_file_path)
 test_images = test_batch[b'data']
 test_labels = np.array(test_batch[b'labels'])
@@ -33,7 +33,7 @@ preprocessed_test_images = preprocess_images(test_images)
 preprocessed_batches = []
 for i in range(1,6):
     #Loading each batch
-    batch_file_path = f'cifar-10-batches-py/data_batch_{i}'
+    batch_file_path = f'cifar-10-python\cifar-10-batches-py/data_batch_{i}'
     batch = load_batch(batch_file_path)
     images = batch[b'data']
 
@@ -47,7 +47,7 @@ for i in range(1,6):
 preprocessed_images_all = np.concatenate(preprocessed_batches, axis=0)
 
 #Preprocess and concatenate labels
-preprocessed_labels = np.concatenate([np.array(batch[b'labels'])for batch in [load_batch(f'cifar-10-batches-py/data_batch_{i}')for i in range(1,6)]])
+preprocessed_labels = np.concatenate([np.array(batch[b'labels'])for batch in [load_batch(f'cifar-10-python\cifar-10-batches-py/data_batch_{i}')for i in range(1,6)]])
 
 #Getting class counts
 class_counts = Counter(preprocessed_labels)
